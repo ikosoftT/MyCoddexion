@@ -1,0 +1,5 @@
+# Todo Tasks 
+
+1 - Re Understand the Parsing logic step by step (DONE)
+2 - Optimize it , and reduce unUsed Func, Fix Norm Issues. (DONE)
+
