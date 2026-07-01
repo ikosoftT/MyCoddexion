@@ -132,9 +132,4 @@ The monitor also checks `coders_finished` (incremented by each coder after compl
 
 ### AI Usage
 
-AI was used to:
-
-- Design and refine the overall architecture (struct layout, thread coordination patterns)
-- Debug concurrency issues (cooldown deadlock, missing variable initialization, incorrect lock ordering)
-- Generate initial function bodies for the priority queue, monitoring logic, and synchronization primitives
-- All AI-generated code was reviewed, tested, and modified to ensure correctness and norm compliance
+fuck AI
