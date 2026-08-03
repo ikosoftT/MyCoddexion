@@ -6,7 +6,7 @@
 /*   By: yikoubaz <yikoubaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 00:44:11 by yikoubaz          #+#    #+#             */
-/*   Updated: 2026/07/27 11:26:32 by yikoubaz         ###   ########.fr       */
+/*   Updated: 2026/08/03 18:21:36 by yikoubaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,13 @@ void	*monitor_routine(void *arg)
 		if (i >= 0 || all_coders_done(sim))
 		{
 			if (i >= 0)
+			{
+				stop_simulation(sim);
+				
 				log_status(&sim->coders[i], "burned out");
-			stop_simulation(sim);
+			}
+			else
+				stop_simulation(sim);
 			return (NULL);
 		}
 		smart_sleep(1, sim);

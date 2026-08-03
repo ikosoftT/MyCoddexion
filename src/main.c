@@ -6,7 +6,7 @@
 /*   By: yikoubaz <yikoubaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 00:43:52 by yikoubaz          #+#    #+#             */
-/*   Updated: 2026/07/28 08:13:50 by yikoubaz         ###   ########.fr       */
+/*   Updated: 2026/08/03 16:13:11 by yikoubaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ static int	run_simulation(t_sim *sim)
 {
 	if (!create_coder_threads(sim))
 		return (ft_err("fail at creating threads\n"));
-	pthread_barrier_wait(&sim->start_barrier);
 	if (!create_monitor_thread(sim))
 	{
 		stop_simulation(sim);

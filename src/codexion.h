@@ -49,7 +49,7 @@ typedef struct s_sim
 	pthread_mutex_t		stop_mutex;
 	pthread_mutex_t		print_mutex;
 	pthread_mutex_t		scheduler_mutex;
-	pthread_barrier_t	start_barrier;
+	pthread_mutex_t		start_mutex;
 	struct s_coder		*coders;
 	struct s_dongle		*dongles;
 }	t_sim;

@@ -52,6 +52,6 @@ void	clean_all(t_sim *sim)
 	pthread_mutex_destroy(&sim->print_mutex);
 	pthread_mutex_destroy(&sim->stop_mutex);
 	pthread_mutex_destroy(&sim->scheduler_mutex);
-	pthread_barrier_destroy(&sim->start_barrier);
+	pthread_mutex_destroy(&sim->start_mutex);
 	free(sim);
 }

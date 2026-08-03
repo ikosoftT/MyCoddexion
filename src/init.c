@@ -25,8 +25,7 @@ int	init_sim(t_sim *sim, t_data *data)
 	sim->request_counter = 0;
 	if (pthread_mutex_init(&sim->scheduler_mutex, NULL) != 0)
 		return (0);
-	if (pthread_barrier_init(&sim->start_barrier, NULL,
-			sim->data.nb_coders + 1) != 0)
+	if (pthread_mutex_init(&sim->start_mutex, NULL) != 0)
 		return (0);
 	return (1);
 }

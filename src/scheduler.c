@@ -6,7 +6,7 @@
 /*   By: yikoubaz <yikoubaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 08:28:35 by yikoubaz          #+#    #+#             */
-/*   Updated: 2026/07/28 10:46:22 by yikoubaz         ###   ########.fr       */
+/*   Updated: 2026/08/03 17:55:07 by yikoubaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static t_request	build_request(t_coder *coder)
 		pthread_mutex_lock(&coder->state_mutex);
 		req.priority = coder->last_compile + sim->data.time_to_burnout;
 		pthread_mutex_unlock(&coder->state_mutex);
-		req.order = ((long)coder->id << 48) | req.order;
+		req.order = sim->request_counter++;
 	}
 	req.coder = coder;
 	return (req);

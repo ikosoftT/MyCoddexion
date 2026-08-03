@@ -6,7 +6,7 @@
 /*   By: yikoubaz <yikoubaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/22 09:56:15 by yikoubaz          #+#    #+#             */
-/*   Updated: 2026/07/29 11:54:44 by yikoubaz         ###   ########.fr       */
+/*   Updated: 2026/08/03 16:59:22 by yikoubaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	less(t_request a, t_request b)
 {
 	if (a.priority != b.priority)
 		return (a.priority < b.priority);
-	return (a.order < b.order);
+	return (a.coder->id < b.coder->id);
 }
 
 // Removes An Itemfrom Heap then Re Sort it
