@@ -111,10 +111,7 @@ Tie-breaking uses request order, ensuring deterministic behavior even with ident
 
 ### AI usage
 
-AI (Claude) was used to assist with:
-- Debugging synchronization issues (deadlock, race conditions, burnout detection)
-- Implementing the priority queue (heap) data structure
-- Writing this README documentation
-- Reviewing the code for edge cases and concurrency correctness
+AI used for Understanding the problems of (Deadlocks, race, etc..).
 
-All AI-generated code has been reviewed, tested, and is fully understood by the author.
+- Optimizing My Code Base Always Getting Bettre Flow
+- Norm the Code and Style it. 
