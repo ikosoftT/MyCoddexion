@@ -28,8 +28,8 @@ static t_request	build_request(t_coder *coder)
 		pthread_mutex_lock(&coder->state_mutex);
 		req.priority = coder->last_compile + sim->data.time_to_burnout;
 		pthread_mutex_unlock(&coder->state_mutex);
-		req.order = sim->request_counter++;
 	}
+
 	req.coder = coder;
 	return (req);
 }
@@ -38,9 +38,8 @@ static int	wait_for_acquire(t_coder *coder, t_dongle *dongle,
 		long end_time, long poll_ms)
 {
 	t_request		*top;
-	struct timespec	timeout;
 
-	while (!simulation_stopped(coder->sim))
+	while (1)
 	{
 		top = heap_peek(&dongle->heap);
 		if (top && top->coder == coder && !dongle->held
@@ -53,8 +52,16 @@ static int	wait_for_acquire(t_coder *coder, t_dongle *dongle,
 		}
 		if (end_time >= 0 && get_time() >= end_time)
 			break ;
-		get_timeout(&timeout, poll_ms);
-		pthread_cond_timedwait(&dongle->cond, &dongle->mutex, &timeout);
+		pthread_mutex_unlock(&dongle->mutex);
+		if (simulation_stopped(coder->sim))
+		{
+			pthread_mutex_lock(&dongle->mutex);
+			break ;
+		}
+		usleep(poll_ms * 1000);
+		pthread_mutex_lock(&dongle->mutex);
+		if (simulation_stopped(coder->sim))
+			break ;
 	}
 	return (0);
 }
