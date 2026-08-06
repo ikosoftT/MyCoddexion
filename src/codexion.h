@@ -48,7 +48,7 @@ typedef struct s_sim
 	pthread_t			monitor;
 	pthread_mutex_t		stop_mutex;
 	pthread_mutex_t		print_mutex;
-	pthread_mutex_t		scheduler_mutex;
+	pthread_mutex_t		grant_mutex;
 	pthread_mutex_t		start_mutex;
 	struct s_coder		*coders;
 	struct s_dongle		*dongles;
@@ -122,8 +122,6 @@ void		release_dongles(t_coder *coder);
 // == Scheduler Stuffs == 
 int			request_dongle(t_coder *coder, t_dongle *dongle);
 void		release_dongle(t_coder *coder, t_dongle *dongle);
-int			request_dongle_timeout(t_coder *coder, t_dongle *dongle,
-				long timeout_ms);
 
 void		log_status(t_coder *coder, char *msg);
 // == Simulation end == 

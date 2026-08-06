@@ -23,7 +23,7 @@ int	init_sim(t_sim *sim, t_data *data)
 	sim->coders = NULL;
 	sim->dongles = NULL;
 	sim->request_counter = 0;
-	if (pthread_mutex_init(&sim->scheduler_mutex, NULL) != 0)
+	if (pthread_mutex_init(&sim->grant_mutex, NULL) != 0)
 		return (0);
 	if (pthread_mutex_init(&sim->start_mutex, NULL) != 0)
 		return (0);
