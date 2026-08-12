@@ -22,7 +22,7 @@ static int	find_burned_coder(t_sim *sim, long *curr)
 		pthread_mutex_lock(&sim->coders[i].state_mutex);
 		*curr = get_time() - sim->coders[i].last_compile;
 		pthread_mutex_unlock(&sim->coders[i].state_mutex);
-		if (*curr > sim->data.time_to_burnout)
+		if (*curr >= sim->data.time_to_burnout)
 			return (i);
 		i++;
 	}
@@ -63,8 +63,9 @@ void	*monitor_routine(void *arg)
 			if (i >= 0)
 			{
 				stop_simulation(sim);
-				
-				log_status(&sim->coders[i], "burned out");
+				pthread_mutex_lock(&sim->print_mutex);
+				printf("%ld %d %s\n", elapsed_time(sim), sim->coders[i].id, "burned out");
+				pthread_mutex_unlock(&sim->print_mutex);
 			}
 			else
 				stop_simulation(sim);

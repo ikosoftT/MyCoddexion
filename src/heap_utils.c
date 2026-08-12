@@ -25,7 +25,7 @@ static int	less(t_request a, t_request b)
 {
 	if (a.priority != b.priority)
 		return (a.priority < b.priority);
-	return (a.coder->id < b.coder->id);
+	return (a.order < b.order);
 }
 
 // Removes An Itemfrom Heap then Re Sort it

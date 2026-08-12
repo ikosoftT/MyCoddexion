@@ -12,9 +12,9 @@
 
 #include "codexion.h"
 
-static int	one_coder(t_coder *coder)
+static int one_coder(t_coder *coder)
 {
-	t_dongle	*dongle;
+	t_dongle *dongle;
 
 	if (coder->sim->data.nb_coders != 1)
 		return (0);
@@ -27,7 +27,7 @@ static int	one_coder(t_coder *coder)
 	return (1);
 }
 
-static int	do_work(t_coder *coder)
+static int do_work(t_coder *coder)
 {
 	log_status(coder, "is compiling");
 	pthread_mutex_lock(&coder->state_mutex);
@@ -49,9 +49,9 @@ static int	do_work(t_coder *coder)
 	return (simulation_stopped(coder->sim));
 }
 
-void	*coder_routine(void *arg)
+void *coder_routine(void *arg)
 {
-	t_coder	*coder;
+	t_coder *coder;
 
 	coder = (t_coder *)arg;
 	pthread_mutex_lock(&coder->sim->start_mutex);
@@ -73,16 +73,16 @@ void	*coder_routine(void *arg)
 	return (NULL);
 }
 
-int	create_coder_threads(t_sim *sim)
+int create_coder_threads(t_sim *sim)
 {
-	int	i;
+	int i;
 
 	pthread_mutex_lock(&sim->start_mutex);
 	i = 0;
 	while (i < sim->data.nb_coders)
 	{
 		if (pthread_create(&sim->coders[i].thread, NULL, coder_routine,
-				&sim->coders[i]) != 0)
+						   &sim->coders[i]) != 0)
 		{
 			pthread_mutex_unlock(&sim->start_mutex);
 			while (--i >= 0)
@@ -95,9 +95,9 @@ int	create_coder_threads(t_sim *sim)
 	return (1);
 }
 
-int	join_coder_threads(t_sim *sim)
+int join_coder_threads(t_sim *sim)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	while (i < sim->data.nb_coders)

@@ -15,7 +15,7 @@
 void log_status(t_coder *coder, char *msg)
 {
 	pthread_mutex_lock(&coder->sim->print_mutex);
-	
-	printf("%ld %d %s\n", elapsed_time(coder->sim), coder->id, msg);
+	if (!simulation_stopped(coder->sim))
+		printf("%ld %d %s\n", elapsed_time(coder->sim), coder->id, msg);
 	pthread_mutex_unlock(&coder->sim->print_mutex);
 }

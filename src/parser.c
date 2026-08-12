@@ -19,7 +19,7 @@ static int	is_valid(char **av)
 	i = 1;
 	while (i <= 6)
 	{
-		if (ft_atol(av[i]) <= 0)
+		if (ft_atol(av[i]) < 0)
 			return (0);
 		i++;
 	}
@@ -58,7 +58,7 @@ static int	validate_args(int ac, char **av)
 	i = 1;
 	while (i <= 8)
 	{
-		if (ft_atol(av[i]) > INT_MAX)
+		if (ft_atol(av[i]) < INT_MIN || ft_atol(av[i]) > INT_MAX)
 			return (0);
 		i++;
 	}
@@ -72,6 +72,7 @@ int	fill_data(char **av, t_data *data)
 	data->nb_coders = (int)ft_atol(av[1]);
 	data->time_to_burnout = ft_atol(av[2]);
 	data->time_to_compile = ft_atol(av[3]);
+	
 	data->time_to_debug = ft_atol(av[4]);
 	data->time_to_refactor = ft_atol(av[5]);
 	data->nb_compiles_required = (int)ft_atol(av[6]);
