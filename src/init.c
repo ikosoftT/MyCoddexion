@@ -18,7 +18,7 @@ int	init_sim(t_sim *sim, t_data *data)
 	if (pthread_mutex_init(&sim->print_mutex, NULL) != 0
 		|| pthread_mutex_init(&sim->stop_mutex, NULL) != 0)
 		return (0);
-	sim->start_time = get_time();
+	sim->start_time = 0;
 	sim->stop = 0;
 	sim->coders = NULL;
 	sim->dongles = NULL;

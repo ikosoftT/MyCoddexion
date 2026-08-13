@@ -91,6 +91,15 @@ int create_coder_threads(t_sim *sim)
 		}
 		i++;
 	}
+	sim->start_time = get_time();
+	i = 0;
+	while (i < sim->data.nb_coders)
+	{
+		pthread_mutex_lock(&sim->coders[i].state_mutex);
+		sim->coders[i].last_compile = sim->start_time;
+		pthread_mutex_unlock(&sim->coders[i].state_mutex);
+		i++;
+	}
 	pthread_mutex_unlock(&sim->start_mutex);
 	return (1);
 }
