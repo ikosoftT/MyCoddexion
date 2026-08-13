@@ -6,7 +6,7 @@
 /*   By: yikoubaz <yikoubaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/17 23:19:28 by yikoubaz          #+#    #+#             */
-/*   Updated: 2026/08/01 08:34:13 by yikoubaz         ###   ########.fr       */
+/*   Updated: 2026/08/13 22:28:05 by yikoubaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,15 @@ int			create_coder_threads(t_sim *sim);
 int			create_monitor_thread(t_sim *sim);
 int			join_coder_threads(t_sim *sim);
 int			join_monitor_thread(t_sim *sim);
+
+// === THREADS UTILS ===
+
+// ==  Monitor Thread Helprs == 
+void		thread_time_init(t_sim *sim);
+
+int			find_burned_coder(t_sim *sim, long *curr);
+int			all_coders_done(t_sim *sim);
+
 // == threads end == 
 
 // == Simulation start == 
@@ -119,11 +128,18 @@ long		elapsed_time(t_sim *sim);
 // == dongles == 
 int			take_dongles(t_coder *coder);
 void		release_dongles(t_coder *coder);
+void		release_dongle(t_coder *coder, t_dongle *dongle);
 // == Scheduler Stuffs == 
 int			request_dongle(t_coder *coder, t_dongle *dongle);
-void		release_dongle(t_coder *coder, t_dongle *dongle);
-
 void		log_status(t_coder *coder, char *msg);
+
+// === Simulation Utils ====
+t_request	build_request(t_coder *coder);
+t_dongle	*get_other(t_sim *sim, t_coder *coder, t_dongle *dongle);
+
+void		push_request(t_coder *coder, t_dongle *dongle);
+int			dongle_state(t_dongle *dongle);
+int			is_eligible(t_sim *sim, t_dongle *dongle, t_coder *coder);
 // == Simulation end == 
 
 // ===== Heap Data structer str ==== 

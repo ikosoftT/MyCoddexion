@@ -6,7 +6,7 @@
 /*   By: yikoubaz <yikoubaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 00:44:15 by yikoubaz          #+#    #+#             */
-/*   Updated: 2026/08/01 08:19:51 by yikoubaz         ###   ########.fr       */
+/*   Updated: 2026/08/13 22:16:52 by yikoubaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ int	fill_data(char **av, t_data *data)
 	data->nb_coders = (int)ft_atol(av[1]);
 	data->time_to_burnout = ft_atol(av[2]);
 	data->time_to_compile = ft_atol(av[3]);
-	
 	data->time_to_debug = ft_atol(av[4]);
 	data->time_to_refactor = ft_atol(av[5]);
 	data->nb_compiles_required = (int)ft_atol(av[6]);

@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   logger.c                                           :+:      :+:    :+:   */
+/*   thread_time_init.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yikoubaz <yikoubaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/18 03:53:26 by yikoubaz          #+#    #+#             */
-/*   Updated: 2026/08/13 21:51:34 by yikoubaz         ###   ########.fr       */
+/*   Created: 2026/08/13 21:17:38 by yikoubaz          #+#    #+#             */
+/*   Updated: 2026/08/13 22:18:31 by yikoubaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "codexion.h"
+#include "./codexion.h"
 
-void	log_status(t_coder *coder, char *msg)
+void	thread_time_init(t_sim *sim)
 {
-	pthread_mutex_lock(&coder->sim->print_mutex);
-	if (!simulation_stopped(coder->sim))
-		printf("%ld %d %s\n", elapsed_time(coder->sim), coder->id, msg);
-	pthread_mutex_unlock(&coder->sim->print_mutex);
+	int	i;
+
+	sim->start_time = get_time();
+	i = 0;
+	while (i < sim->data.nb_coders)
+	{
+		pthread_mutex_lock(&sim->coders[i].state_mutex);
+		sim->coders[i].last_compile = get_time();
+		pthread_mutex_unlock(&sim->coders[i].state_mutex);
+		i++;
+	}
 }

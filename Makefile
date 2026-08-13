@@ -14,7 +14,10 @@ SRC = \
 	src/scheduler.c \
 	src/heap.c \
 	src/heap_utils.c \
-	src/cleanup.c
+	src/cleanup.c \
+	src/thread_time_init.c \
+	src/scheduler_utils.c \
+	src/monitor_util.c \
 
 OBJ = $(SRC:.c=.o)
 
