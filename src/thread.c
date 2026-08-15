@@ -6,7 +6,7 @@
 /*   By: yikoubaz <yikoubaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 00:44:20 by yikoubaz          #+#    #+#             */
-/*   Updated: 2026/08/13 21:41:19 by yikoubaz         ###   ########.fr       */
+/*   Updated: 2026/08/14 14:29:59 by yikoubaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int	create_coder_threads(t_sim *sim)
 		if (pthread_create(&sim->coders[i].thread, NULL, coder_routine,
 				&sim->coders[i]) != 0)
 		{
+			stop_simulation(sim);
 			pthread_mutex_unlock(&sim->start_mutex);
 			while (--i >= 0)
 				pthread_join(sim->coders[i].thread, NULL);

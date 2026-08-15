@@ -6,7 +6,7 @@
 /*   By: yikoubaz <yikoubaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 00:44:07 by yikoubaz          #+#    #+#             */
-/*   Updated: 2026/08/13 22:29:33 by yikoubaz         ###   ########.fr       */
+/*   Updated: 2026/08/14 15:06:08 by yikoubaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ int	take_dongles(t_coder *coder)
 			sim->dongles[right].held = 1;
 			pthread_mutex_unlock(&sim->dongles[right].mutex);
 			pthread_mutex_unlock(&sim->grant_mutex);
-			log_status(coder, "has taken a dongle\nhas taken a dongle");
+			log_status(coder, "has taken a dongle");
+			log_status(coder, "has taken a dongle");
 			return (1);
 		}
 		pthread_mutex_unlock(&sim->grant_mutex);
