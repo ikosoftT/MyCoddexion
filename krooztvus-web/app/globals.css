@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+:root {
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-poppins);
+}
+
+body {
+  font-family: var(--font-sans), Arial, sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading), Arial, sans-serif;
+}
+
+.container {
+  @apply mx-auto max-w-7xl px-4;
+}
