@@ -16,6 +16,8 @@ export default function Footer() {
             <Link href="/setup-installation">Setup</Link>
             <Link href="/blog">Blog</Link>
             <Link href="/faq">FAQ</Link>
+            <Link href="/privacy">Privacy Policy</Link>
+            <Link href="/terms">Terms of Service</Link>
           </div>
         </div>
         <div>
@@ -26,6 +28,9 @@ export default function Footer() {
         </div>
       </div>
       <div className="border-t border-zinc-800 px-4 py-4 text-center text-xs text-zinc-500">
+        <p className="mb-1">
+          Please stream responsibly and comply with your local laws and content rights.
+        </p>
         © {new Date().getFullYear()} KroozTV US. All rights reserved.
       </div>
     </footer>
