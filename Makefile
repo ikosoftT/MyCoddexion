@@ -23,7 +23,7 @@ OBJ = $(SRC:.c=.o)
 
 HR = src/codexion.h
 
-all: $(NAME) clean
+all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)

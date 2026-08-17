@@ -6,33 +6,29 @@
 /*   By: yikoubaz <yikoubaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 00:44:15 by yikoubaz          #+#    #+#             */
-/*   Updated: 2026/08/13 22:16:52 by yikoubaz         ###   ########.fr       */
+/*   Updated: 2026/08/17 12:54:29 by yikoubaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "codexion.h"
 
-static int	is_valid(char **av)
-{
-	int	i;
-
-	i = 1;
-	while (i <= 6)
-	{
-		if (ft_atol(av[i]) < 0)
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
 static int	is_num(char *s)
 {
 	int	i;
+	int	si;
 
+	si = 1;
 	i = 0;
 	while (s[i] && is_space(s[i]))
 		i++;
+	if (!s[i])
+		return (0);
+	if (s[i] == '-' || s[i] == '+')
+	{
+		if (s[i] == '-')
+			si *= -1;
+		i++;
+	}
 	while (s[i])
 	{
 		if (s[i] < '0' || s[i] > '9')
@@ -56,14 +52,12 @@ static int	validate_args(int ac, char **av)
 		i++;
 	}
 	i = 1;
-	while (i <= 8)
+	while (i <= 7)
 	{
-		if (ft_atol(av[i]) < INT_MIN || ft_atol(av[i]) > INT_MAX)
+		if (ft_atol(av[i]) < 0)
 			return (0);
 		i++;
 	}
-	if (!is_valid(av) || ft_atol(av[8]) < 0)
-		return (0);
 	return (1);
 }
 

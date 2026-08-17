@@ -6,7 +6,7 @@
 /*   By: yikoubaz <yikoubaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 10:39:56 by yikoubaz          #+#    #+#             */
-/*   Updated: 2026/07/26 05:14:18 by yikoubaz         ###   ########.fr       */
+/*   Updated: 2026/08/17 13:00:24 by yikoubaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ t_request	heap_pop(t_heap *heap)
 
 void	heap_destroy(t_heap *heap)
 {
+	if (!heap->array)
+		return ;
 	free(heap->array);
 	heap->array = NULL;
 	heap->size = 0;

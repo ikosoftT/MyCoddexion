@@ -6,7 +6,7 @@
 /*   By: yikoubaz <yikoubaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/23 08:28:35 by yikoubaz          #+#    #+#             */
-/*   Updated: 2026/08/13 21:59:08 by yikoubaz         ###   ########.fr       */
+/*   Updated: 2026/08/17 11:39:33 by yikoubaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,16 @@ static int	get_it(t_coder *coder, t_dongle *dongle, t_sim *sim)
 		return (1);
 	}
 	return (0);
+}
+
+int	dongle_state(t_dongle *dongle)
+{
+	int	free;
+
+	pthread_mutex_lock(&dongle->mutex);
+	free = (!dongle->held && get_time() >= dongle->cooldown_until);
+	pthread_mutex_unlock(&dongle->mutex);
+	return (free);
 }
 
 int	request_dongle(t_coder *coder, t_dongle *dongle)

@@ -6,7 +6,7 @@
 /*   By: yikoubaz <yikoubaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 00:44:23 by yikoubaz          #+#    #+#             */
-/*   Updated: 2026/08/13 22:02:56 by yikoubaz         ###   ########.fr       */
+/*   Updated: 2026/08/17 12:53:49 by yikoubaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,27 @@ int	is_space(char c)
 long	ft_atol(char *s)
 {
 	long	r;
+	int		si;
 	int		i;
 
 	r = 0;
 	i = 0;
+	si = 1;
 	while (s[i] && is_space(s[i]))
 		i++;
+	if (s[i] == '-' || s[i] == '+')
+	{
+		if (s[i] == '-')
+			si *= -1;
+		i++;
+	}
 	while (s[i])
 	{
 		r = r * 10 + (s[i++] - 48);
 		if (r > INT_MAX)
-		{
-			printf("ana nadzi\n");
-			exit(1);
-		}
+			return (-1337);
 	}
-	return (r);
+	return (r * si);
 }
 
 void	get_timeout(struct timespec *ts, long ms)

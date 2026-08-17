@@ -6,13 +6,13 @@
 /*   By: yikoubaz <yikoubaz@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/18 00:44:11 by yikoubaz          #+#    #+#             */
-/*   Updated: 2026/08/13 22:11:38 by yikoubaz         ###   ########.fr       */
+/*   Updated: 2026/08/17 09:45:55 by yikoubaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "codexion.h"
 
-static void	do_work(t_sim *sim, int *i)
+static void	print_burnout(t_sim *sim, int *i)
 {
 	stop_simulation(sim);
 	pthread_mutex_lock(&sim->print_mutex);
@@ -34,7 +34,7 @@ void	*monitor_routine(void *arg)
 		if (i >= 0 || all_coders_done(sim))
 		{
 			if (i >= 0)
-				do_work(sim, &i);
+				print_burnout(sim, &i);
 			else
 				stop_simulation(sim);
 			return (NULL);
